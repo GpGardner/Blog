@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Blog Site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Latest compiled and minified CSS -->
+	    <div th:replace="/fragments/styling :: head-style" ></div>
+</head>
+<body>
+<div class="container">
+<h1>Welcome to Our Blog Post Site!</h1>
+<div th:replace="fragments/navbar :: navbar" ></div>
+	<div class="row">
+		<div th:each="blog:${repo}">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 th:text="${blog.title}"></h2>
+				</div>
+				<div class="panel-body">
+					<p th:text="${blog.blogEntry}" />
+					<p th:text="${blog.author}"/>
+				</div>
+				<div class="panel-footer">
+					<!-- Link to Update -->
+					<!-- Link to Show  -->     
+					<a th:href="@{'/blog_posts/update/{id}'(id=${blog.id})}" class="btn-lg btn-info">Update</a>
+					<a th:href="@{'/blog_posts/delete/{id}'(id=${blog.id})}" class="btn-lg btn-danger">Delete</a>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+</div>
+	<div th:replace="/fragments/styling :: body-links" ></div>
+</body>
+</html>        

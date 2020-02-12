@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Blog Site</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!-- Latest compiled and minified CSS -->
+	    <div th:replace="/fragments/styling :: head-style" ></div>
+</head>
+<body>
+<div class="container">
+<h1>Welcome to Our Blog Post Site!</h1>
+<div th:replace="fragments/navbar :: navbar" ></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+				<p>Your post has been deleted</p>
+						<div class="panel-footer">
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+			
+	
+	<div th:replace="/fragments/styling :: body-links" ></div>
+</body>
+</html> 
