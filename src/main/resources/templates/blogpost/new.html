@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>Your Blog Post</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <div th:replace="/fragments/styling :: head-style" ></div>
-
-</head>
+	<head>
+		<title>Create a New Blog</title>
+    	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    	<!-- Latest compiled and minified CSS -->
+		
+        <div th:replace="/fragments/styling :: head-style" ></div>
+        
+	</head>
 	<body>
+		<div th:replace="fragments/navbar :: navbar" ></div>
+		
+		
 		<div class="container">
-		<h1>Your Blog Post</h1>
- 		<form action="#" th:action="@{/blog_posts/new}" th:object="${blogPost}" method="post">
+		<h1>Create a New Blog Post</h1>
+		<form action="#" th:action="@{/blog_posts/new}" th:object="${blogPost}" method="post">
+		
+		<!-- Add a hidden form field to handle the update. This solves the new entry every time you update. Before, there was no ID assigned so it would just create a new BlogPost -->
+		<input type="hidden" th:field="*{id}" />
+			
+			<div class="form-group">
+ 				<input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}" />
+ 			</div>
  		
- 		<div class="form-group">
- 			<input type="text" class="form-control" placeholder="Blog Title..." th:field="*{title}" />
- 		</div>
+ 			<div class="form-group">
+ 				<input type="text" class="form-control" placeholder="Your Name Here..." th:field="*{author}" />
+ 			</div>
  		
- 		<div class="form-group">
- 			<input type="text" class="form-control" placeholder="Your Name Here..." th:field="*{author}" />
- 		</div>
- 		
- 		<div class="form-group">
- 			<input type="text" class ="form-control" placeholder="Blog Entry" th:field="*{blogEntry}" />
- 		</div>
+ 			<div class="form-group">
+ 				<input type="text" class ="form-control" placeholder="Blog Entry" th:field="*{blogEntry}" />
+ 			</div>
 
- 		<button  type="button" th:href="@{/}" class="btn btn-primary">Submit Your Post</button>
-</form>
-</div>
+ 			<button class="btn btn-primary">Submit Your Post</button>
+		</form>
+		
+		</div>
 	<div th:replace="/fragments/styling :: body-links" ></div>
 </body>
 </html>
